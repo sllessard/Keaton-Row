@@ -1,0 +1,287 @@
+<!Doctype html>
+<htmL>
+    <head>
+        <title>{Title}</title>
+        <meta name="viewport" content="width=device-width, initial-scale = 1">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://keatonrow.com/public/css/fonts-sierra.css"/>
+        {block:Description}
+            <meta name="description" content="{MetaDescription}"/>
+        {/block:Description}
+        <style>
+            {CustomCSS}
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="header__full">
+                <div class="topBar"></div>
+                <div class="topBar__rec">
+                    <div class="topBar__rec-link">
+                        <a href="http://www.keatonrow.com">GET STYLED</a>
+                    </div>
+                </div>
+                <div class="titleWrap">
+                    <a href="http://devnxunu.tumblr.com/">
+                        <h1>ALONG <span class="italic">the</span> ROW</h1>
+                    </a>
+                    {block:Description}
+                        <p class="description">{Description}</p>
+                    {/block:Description}
+                </div>
+            </div>
+        </header>
+        {block:PermalinkPagination}
+            <div class="collapsed header__min">
+                <h3>ALONG <span class="italic">the</span> Row</h3>
+                <div class="descriptionWrap">
+                    <div class="descriptionPag">
+                        <p class="pagination">
+                            <div class="pagination__Previous">
+                                {block:PreviousPost}
+                                    <a href="{PreviousPost}">&#171;</a>
+                                {/block:PreviousPost}
+                            </div>
+                            {block:posts}
+                                {block:text}
+                                    {block:Title}
+                                        <p>"{Title}"</p>
+                                        <p>/</p>
+                                    {/block:Title}
+                                {/block:text}
+                            {/block:posts}
+                            <ul>
+                                <li>
+                                    <a href="http://twitter.com/intent/tweet?status={Title}+{URLEncodedPermalink}"><i class="mediaIcon fa fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="http://www.facebook.com/sharer/sharer.php?u={URLEncodedPermalink}&title={TITLE}"><i class="mediaIcon fa fa-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a href="http://pinterest.com/pin/create/bookmarklet/?media=[MEDIA]&url={URLEncodedPermalink}"><i class="mediaIcon fa fa-pinterest-p"></i></a>
+                                </li>
+                            </ul>
+                            <div class="pagination__Next">
+                                {block:NextPost}
+                                    <a href="{NextPost}">&#187;</a>
+                                {/block:NextPost}
+                            </div>
+                        </p>
+                    </div>
+                </div>
+                <div class="topBar__rec">
+                    <div class="topBar__rec-link">
+                        <a href="http://www.keatonrow.com">GET STYLED</a>
+                    </div>
+                </div>
+            </div>
+        {/block:PermalinkPagination}
+        {block:TagPage}
+            <h2 class="tagWrap">&#8212; #{Tag} &#8212;</h2>
+        {/block:TagPage}  
+        <main>
+            <ol id="posts">
+                {block:Posts}
+                    {block:Text}
+                        <li class="post text">
+                        <div class="dateAuthor">
+                            {block:Date}
+                               <p>{DayOfMonthWithZero} {Month} {Year}</p>
+                            {/block:Date}
+                        </div>
+                        <div class="titleWrap">
+                            {block:Title}
+                                <h2><a href="{Permalink}">{Title}</a></h2>
+                            {/block:Title}
+                        </div>
+                            {Body}
+                            {block:More}
+                                <a href="{Permalink}" class="readMoreLink">Read more &#187;</a>
+                            {/block:More}
+                            {block:HasTags}
+                                <ul class="tags">
+                                    {block:Tags}
+                                        <li>
+                                            <a href="{TagURL}">#{Tag}</a>
+                                        </li>
+                                    {/block:Tags}
+                                </ul>
+                            {/block:HasTags}
+                        </li>
+                    <div class="dividerWrap">
+                        <div class="divider"></div>
+                    </div>
+                    {/block:Text}
+                    {block:Photo}
+                        <li class="post photo">
+                            {block:HighRes}
+                                <a href="{Permalink}">
+                                    <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+                                </a>
+                            {/block:HighRes}
+                            <div class="dateAuthor">
+                                {block:Date}
+                                   <p>{DayOfMonthWithZero} {Month} {Year}</p>
+                                {/block:Date}
+                            </div>
+                            {block:Caption}
+                                <div class="caption">{Caption}</div>
+                            {/block:Caption}
+                            {block:More}
+                                <a href="{Permalink}" class="readMoreLink">Read more &#187;</a>
+                            {/block:More}
+                            {block:HasTags}
+                                <ul class="tags">
+                                    {block:Tags}
+                                        <li>
+                                            <a href="{TagURL}">#{Tag}</a>
+                                        </li>
+                                    {/block:Tags}
+                                </ul>
+                            {/block:HasTags}
+                        </li>
+                        <div class="dividerWrap">
+                            <div class="divider"></div>
+                        </div>
+                    {/block:Photo}
+                    {block:Photoset}
+                        <li class="post photoset">
+                            {Photoset}
+                                <div class="dateAuthor">
+                                    {block:Date}
+                                       <p>{DayOfMonthWithZero} {Month} {Year}</p>
+                                    {/block:Date}
+                                </div>
+                                {block:Caption}
+                                    <div class="caption">{Caption}</div>
+                                {/block:Caption}
+                                {block:More}
+                                    <a href="{Permalink}" class="readMoreLink">Read more &#187;</a>
+                                {/block:More}
+                                {block:HasTags}
+                                    <ul class="tags">
+                                        {block:Tags}
+                                            <li>
+                                                <a href="{TagURL}">#{Tag}</a>
+                                            </li>
+                                        {/block:Tags}
+                                    </ul>
+                                {/block:HasTags}
+                            </li>
+                        <div class="dividerWrap">
+                        <div class="divider"></div>
+                        </div>
+                    {/block:Photoset}
+                    {block:Video}
+                        <li class="post video">
+                            {Video-700}
+                            <div class="dateAuthor">
+                                {block:Date}
+                                   <p>{DayOfMonthWithZero} {Month} {Year}</p>
+                                {/block:Date}
+                            </div>
+                            {block:Caption}
+                                <div class="caption">{Caption}</div>
+                            {/block:Caption}
+                            {block:More}
+                                <a href="{Permalink}" class="readMoreLink">Read more &#187;</a>
+                            {/block:More}
+                            {block:HasTags}
+                                <ul class="tags">
+                                    {block:Tags}
+                                        <li>
+                                            <a href="{TagURL}">#{Tag}</a>
+                                        </li>
+                                    {/block:Tags}
+                                </ul>
+                            {/block:HasTags}
+                        </li>
+                    <div class="dividerWrap">
+                    <div class="divider"></div>
+                    </div>
+                    {/block:Video}
+                {/block:Posts}
+            </ol>
+            <p class="pagination">
+            <div class="pagination__Previous">
+                {block:PreviousPage}
+                    <a href="{PreviousPage}">&#171; Previous</a>
+                {/block:PreviousPage}</div>
+                <div class="pagination__Next">
+                    {block:NextPage}
+                        <a href="{NextPage}">Next &#187;</a>
+                    {/block:NextPage}
+                </div>
+            </p>
+            {block:PermalinkPagination}
+                <p class="permaPagination">
+                    <div class="pagination__Previous">
+                        {block:PreviousPost}
+                            <a href="{PreviousPost}">&#171; Previous</a>
+                        {/block:PreviousPost}
+                    </div>
+                    <div class="pagination__Next">
+                        {block:NextPost}
+                            <a href="{NextPost}">Next &#187;</a>
+                        {/block:NextPost}
+                    </div>
+                </p>
+            {/block:PermalinkPagination}
+            <div class="collapsed header__min">
+                <h3>ALONG <span class="italic">the</span> Row</h3>
+                <div class="descriptionWrap">
+                    {block:Description}
+                        <p class="description">{Description}</p>
+                    {/block:Description}
+                </div>
+                <div class="topBar__rec">
+                    <div class="topBar__rec-link">
+                        <a href="http://www.keatonrow.com">GET STYLED</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+            <footer>
+                <div class="footerWrap">
+                    <div class="footerLeft">
+                        <p>Keep up with Keaton Row.</p>
+                        <div class="formWrap">
+                            <form action="" autocomplete="off" spellcheck="false" method="POST" target="_blank" noValidate>
+                            <div class="emailInputWrap">
+                                <input id="email" class="bottom--color input--text" type="email" name="MERGE0" placeholder="email@address.com"/>
+                            </div>
+                            <div class="submitWrap">
+                                <input class="bottom--color input--text" type="submit" value="&raquo;"/>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="https://www.pinterest.com/keatonrow/"><i class="mediaIcon fa fa-pinterest-p"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/keatonrow/?hl=en"><i class="mediaIcon fa fa-instagram"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/keatonrow"><i class="mediaIcon fa fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/keatonrow"><i class="mediaIcon fa fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href=""><i class="mediaIcon fa fa-rss"></i></a>
+                        </li>
+                    </ul>
+                    <div class="monogramWrap">
+                        <a href="www.keatonrow.com"></a>
+                    </div>
+                </div>
+            </footer>
+            
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        function resizePhotosets(){for(var o=document.body.querySelector(".html_photoset").offsetWidth,e=document.body.querySelectorAll("iframe.photoset"),s=0;s<e.length;++s){var a=e[s];a.width=o}}window.onload=resizePhotosets,window.onresize=resizePhotosets,$(document).ready(function(){var o=!1,e=window.pageYOffset;$(window).scroll(function(){o||$("#header__min").hasClass("initDrop")?(o=!1,e=window.pageYOffset):(o=!0,e<$(window).scrollTop()?$("#header__min").hasClass("collapsed")&&$(window).scrollTop()>170&&$(window).scrollTop()<180?$("#header__min").removeClass("collapsed").addClass("initDrop").stop().animate({top:"0"},500,function(){o=!1,e=window.pageYOffset,$("#header__min").removeClass("initDrop")}):$("#header__min").hasClass("collapsed")?(o=!1,e=window.pageYOffset):$("#header__min").addClass("collapsed").stop().animate({top:"-48px"},500,function(){o=!1,e=window.pageYOffset}):e>$(window).scrollTop()&&($("#header__min").hasClass("collapsed")&&$(window).scrollTop()>180?$("#header__min").removeClass("collapsed").stop().animate({top:"0"},500,function(){o=!1,e=window.pageYOffset}):!$("#header__min").hasClass("collapsed")&&$(window).scrollTop()<170?$("#header__min").addClass("collapsed").stop().animate({top:"-48px"},500,function(){o=!1,e=window.pageYOffset}):(o=!1,e=window.pageYOffset)))})});
+    </script>
+</body>
+</html>
